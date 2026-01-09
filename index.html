@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daftar Sekarang & Dapat Potongan! | UPP</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2ecc71, #1abc9c);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      animation: bounceIn 1s ease-in-out;
+    }
+
+    .highlight {
+      color: #ffeb3b;
+      font-weight: bold;
+      background: rgba(0,0,0,0.3);
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 15px 0;
+    }
+
+    .promo-box {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px 0;
+      animation: slideInLeft 1s ease-out;
+      position: relative;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff5722;
+      text-decoration: line-through;
+      margin-right: 10px;
+    }
+
+    .discounted {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #4caf50;
+      animation: zoomIn 1s ease-in-out;
+    }
+
+    .cta-button {
+      background: linear-gradient(45deg, #ff9800, #ff5722);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      animation: shake 0.5s infinite alternate;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px solid #ffeb3b;
+      border-radius: 50px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .cta-button:hover::after {
+      opacity: 1;
+      animation: glow 1s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #ffeb3b; }
+      50% { box-shadow: 0 0 20px #ffeb3b; }
+      100% { box-shadow: 0 0 10px #ffeb3b; }
+    }
+
+    .qr-code {
+      width: 120px;
+      height: 120px;
+      margin: 20px auto;
+      border: 3px solid #fff;
+      border-radius: 10px;
+      background: url('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://pmb.upp.ac.id/affiliasi/ayodaftarsekarang') no-repeat center center;
+      background-size: contain;
+      animation: blinkBorder 2s infinite;
+    }
+
+    @keyframes blinkBorder {
+      0%, 100% { border-color: #fff; }
+      50% { border-color: #ffeb3b; }
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: #ff5722;
+      color: white;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      animation: popIn 0.8s ease-out;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes shake {
+      from { transform: translateX(0); }
+      to { transform: translateX(-5px); }
+    }
+
+    .footer {
+      font-size: 0.8rem;
+      margin-top: 20px;
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 10px;
+      }
+      h1 { font-size: 1.8rem; }
+      .price, .discounted { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JADILAH BAGIAN DARI <span class="highlight">GENERASI UNGGUL</span> BERSAMA UPP!</h1>
+    <p>Periode Pendaftaran: <strong>2 Januari – 31 Agustus 2026</strong></p>
+
+    <!-- HANYA BAGIAN INI YANG DIUBAH -->
+    <div class="promo-box">
+      <div class="discount-badge">🔥 POTONGAN 25.000!</div>
+      <p> <strong>Promo Pendaftaran via Link!</strong> </p>
+      <p>Gunakan link khusus ini untuk mendapatkan <strong>potongan langsung Rp25.000</strong> pada biaya pendaftaran.</p>
+      <p>Dari <span class="price">Rp200.000</span> menjadi hanya <span class="discounted">Rp175.000</span>!</p>
+      <p><strong>Link resmi:</strong></p>
+      <a href="https://pmb.upp.ac.id/affiliasi/ayodaftarsekarang" target="_blank" style="color:#ffeb3b; text-decoration:underline;">https://pmb.upp.ac.id/affiliasi/ayodaftarsekarang</a>
+    </div>
+
+    <div class="qr-code"></div>
+
+    <button class="cta-button" onclick="window.open('https://pmb.upp.ac.id/affiliasi/ayodaftarsekarang', '_blank')">
+      🚀 DAFTAR SEKARANG & DAPAT POTONGAN!
+    </button>
+
+    <div class="footer">
+      *Promo terbatas. Hanya berlaku untuk pendaftaran melalui link afiliasi di atas.
+    </div>
+  </div>
+
+  <script>
+    setInterval(() => {
+      const highlight = document.querySelector('.highlight');
+      highlight.style.opacity = highlight.style.opacity === '0.5' ? '1' : '0.5';
+    }, 800);
+
+    setInterval(() => {
+      const btn = document.querySelector('.cta-button');
+      btn.style.boxShadow = btn.style.boxShadow === '0 8px 25px rgba(0,0,0,0.4)' 
+        ? '0 5px 15px rgba(0,0,0,0.3)' 
+        : '0 8px 25px rgba(0,0,0,0.4)';
+    }, 2000);
+
+    document.querySelector('.cta-button').addEventListener('mouseenter', () => {
+      const particle = document.createElement('div');
+      particle.style.position = 'absolute';
+      particle.style.width = '10px';
+      particle.style.height = '10px';
+      particle.style.backgroundColor = '#ffeb3b';
+      particle.style.borderRadius = '50%';
+      particle.style.pointerEvents = 'none';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animation = 'float 1s ease-out forwards';
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 1000);
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes float {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-20px) scale(0); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
